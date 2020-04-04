@@ -414,13 +414,15 @@ proc create_root_design { parentCell } {
   set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:10.0 microblaze_0 ]
   set_property -dict [ list \
    CONFIG.C_BASE_VECTORS {0x00000000} \
-   CONFIG.C_DEBUG_ENABLED {2} \
+   CONFIG.C_DEBUG_ENABLED {0} \
    CONFIG.C_D_AXI {1} \
    CONFIG.C_I_AXI {1} \
    CONFIG.C_NUMBER_OF_PC_BRK {4} \
    CONFIG.C_NUMBER_OF_RD_ADDR_BRK {2} \
    CONFIG.C_NUMBER_OF_WR_ADDR_BRK {2} \
- ] $microblaze_0
+   CONFIG.C_USE_BARREL {1} \
+   CONFIG.C_USE_HW_MUL {1} \
+   ] $microblaze_0
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
